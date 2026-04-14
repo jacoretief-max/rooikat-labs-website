@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 220" width="600" height="220">
+  <defs>
+    <!-- Dark background gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0e0e0e"/>
+      <stop offset="100%" style="stop-color:#1a1410"/>
+    </linearGradient>
+    <!-- Amber glow for emblem -->
+    <radialGradient id="amberGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#e8a030;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#e8a030;stop-opacity:0"/>
+    </radialGradient>
+    <!-- Fur gradient for face -->
+    <linearGradient id="faceGrad" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4883a"/>
+      <stop offset="40%" style="stop-color:#c4752a"/>
+      <stop offset="100%" style="stop-color:#8a4a18"/>
+    </linearGradient>
+    <!-- Inner ear gradient -->
+    <linearGradient id="earInner" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8b060"/>
+      <stop offset="100%" style="stop-color:#c47030"/>
+    </linearGradient>
+    <!-- Hexagon clip -->
+    <clipPath id="hexClip">
+      <polygon points="110,10 170,10 200,62 170,114 110,114 80,62"/>
+    </clipPath>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="220" fill="url(#bgGrad)" rx="12"/>
+
+  <!-- Subtle amber glow behind emblem -->
+  <circle cx="140" cy="110" r="85" fill="url(#amberGlow)"/>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- CARACAL HEAD — stylized vector          -->
+  <!-- ═══════════════════════════════════════ -->
+
+  <!-- === LEFT EAR (with tuft) === -->
+  <!-- Ear base -->
+  <path d="M108,88 Q100,60 92,38 Q97,34 103,36 Q112,62 116,84 Z"
+        fill="#b86820" stroke="#0e0e0e" stroke-width="0.5"/>
+  <!-- Ear inner -->
+  <path d="M109,87 Q103,65 96,46 Q100,43 104,45 Q112,66 115,83 Z"
+        fill="url(#earInner)" opacity="0.7"/>
+  <!-- Ear tuft — left strand -->
+  <path d="M92,38 Q85,22 80,10 Q83,9 86,11 Q91,24 97,36 Z"
+        fill="#2a1a08" stroke="#1a0e04" stroke-width="0.3"/>
+  <path d="M96,36 Q90,20 87,8 Q90,7 92,9 Q97,22 101,35 Z"
+        fill="#3a2010" stroke="#1a0e04" stroke-width="0.3"/>
+  <path d="M100,35 Q96,19 94,7 Q97,6 99,8 Q103,20 105,34 Z"
+        fill="#4a2a14" stroke="#1a0e04" stroke-width="0.3"/>
+  <!-- Tuft highlight -->
+  <path d="M93,37 Q89,23 87,12" stroke="#c87830" stroke-width="0.8" fill="none" opacity="0.6"/>
+
+  <!-- === RIGHT EAR (with tuft) === -->
+  <path d="M172,88 Q180,60 188,38 Q183,34 177,36 Q168,62 164,84 Z"
+        fill="#b86820" stroke="#0e0e0e" stroke-width="0.5"/>
+  <path d="M171,87 Q177,65 184,46 Q180,43 176,45 Q168,66 165,83 Z"
+        fill="url(#earInner)" opacity="0.7"/>
+  <!-- Ear tuft — right -->
+  <path d="M188,38 Q195,22 200,10 Q197,9 194,11 Q189,24 183,36 Z"
+        fill="#2a1a08" stroke="#1a0e04" stroke-width="0.3"/>
+  <path d="M184,36 Q190,20 193,8 Q190,7 188,9 Q183,22 179,35 Z"
+        fill="#3a2010" stroke="#1a0e04" stroke-width="0.3"/>
+  <path d="M180,35 Q184,19 186,7 Q183,6 181,8 Q177,20 175,34 Z"
+        fill="#4a2a14" stroke="#1a0e04" stroke-width="0.3"/>
+  <path d="M187,37 Q191,23 193,12" stroke="#c87830" stroke-width="0.8" fill="none" opacity="0.6"/>
+
+  <!-- === MAIN HEAD/FACE === -->
+  <ellipse cx="140" cy="115" rx="46" ry="44" fill="url(#faceGrad)"/>
+
+  <!-- Forehead stripe — left -->
+  <path d="M128,74 Q130,82 131,92" stroke="#8a4010" stroke-width="1.5" fill="none" opacity="0.8"/>
+  <!-- Forehead stripe — right -->
+  <path d="M152,74 Q150,82 149,92" stroke="#8a4010" stroke-width="1.5" fill="none" opacity="0.8"/>
+
+  <!-- Cheek fur volume -->
+  <ellipse cx="108" cy="118" rx="18" ry="14" fill="#c07030" opacity="0.7"/>
+  <ellipse cx="172" cy="118" rx="18" ry="14" fill="#c07030" opacity="0.7"/>
+
+  <!-- === EYES === -->
+  <!-- Left eye socket -->
+  <ellipse cx="126" cy="108" rx="10" ry="8" fill="#1a0e04"/>
+  <!-- Left iris -->
+  <ellipse cx="126" cy="108" rx="8" ry="6.5" fill="#6a7a30"/>
+  <!-- Left pupil -->
+  <ellipse cx="126" cy="108" rx="3" ry="5" fill="#0a0a0a"/>
+  <!-- Left eye highlight -->
+  <circle cx="128" cy="105" r="1.8" fill="white" opacity="0.9"/>
+  <circle cx="123" cy="110" r="0.8" fill="white" opacity="0.4"/>
+
+  <!-- Right eye socket -->
+  <ellipse cx="154" cy="108" rx="10" ry="8" fill="#1a0e04"/>
+  <!-- Right iris -->
+  <ellipse cx="154" cy="108" rx="8" ry="6.5" fill="#6a7a30"/>
+  <!-- Right pupil -->
+  <ellipse cx="154" cy="108" rx="3" ry="5" fill="#0a0a0a"/>
+  <!-- Right eye highlight -->
+  <circle cx="156" cy="105" r="1.8" fill="white" opacity="0.9"/>
+  <circle cx="151" cy="110" r="0.8" fill="white" opacity="0.4"/>
+
+  <!-- Eye brow marks -->
+  <path d="M118,100 Q122,97 126,98" stroke="#7a3a10" stroke-width="1.2" fill="none"/>
+  <path d="M154,98 Q158,97 162,100" stroke="#7a3a10" stroke-width="1.2" fill="none"/>
+
+  <!-- === NOSE === -->
+  <!-- Bridge -->
+  <line x1="140" y1="100" x2="140" y2="118" stroke="#8a4010" stroke-width="1.2" opacity="0.6"/>
+  <!-- Nose tip -->
+  <path d="M133,118 Q140,116 147,118 Q140,126 133,118 Z" fill="#3a1e0a"/>
+  <!-- Nose highlight -->
+  <ellipse cx="137" cy="119" rx="2" ry="1.5" fill="#6a3820" opacity="0.7"/>
+
+  <!-- === MUZZLE area === -->
+  <ellipse cx="140" cy="128" rx="16" ry="10" fill="#d49060" opacity="0.5"/>
+  <!-- Lip line -->
+  <path d="M133,124 Q140,122 147,124" stroke="#8a4010" stroke-width="1" fill="none" opacity="0.7"/>
+
+  <!-- === WHISKERS === -->
+  <!-- Left whiskers -->
+  <line x1="124" y1="126" x2="92" y2="120" stroke="#e8d8b0" stroke-width="0.9" opacity="0.85"/>
+  <line x1="124" y1="128" x2="90" y2="128" stroke="#e8d8b0" stroke-width="0.9" opacity="0.8"/>
+  <line x1="124" y1="130" x2="92" y2="136" stroke="#e8d8b0" stroke-width="0.9" opacity="0.75"/>
+  <!-- Right whiskers -->
+  <line x1="156" y1="126" x2="188" y2="120" stroke="#e8d8b0" stroke-width="0.9" opacity="0.85"/>
+  <line x1="156" y1="128" x2="190" y2="128" stroke="#e8d8b0" stroke-width="0.9" opacity="0.8"/>
+  <line x1="156" y1="130" x2="188" y2="136" stroke="#e8d8b0" stroke-width="0.9" opacity="0.75"/>
+
+  <!-- === NECK / CHEST === -->
+  <path d="M110,152 Q115,165 140,170 Q165,165 170,152 Q162,158 140,160 Q118,158 110,152 Z"
+        fill="#b86820" opacity="0.8"/>
+
+  <!-- Chin white patch -->
+  <ellipse cx="140" cy="136" rx="10" ry="6" fill="#e8c890" opacity="0.5"/>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- TEXT                                    -->
+  <!-- ═══════════════════════════════════════ -->
+
+  <!-- Thin amber rule above text -->
+  <line x1="230" y1="80" x2="570" y2="80" stroke="#e8a030" stroke-width="0.7" opacity="0.4"/>
+
+  <!-- ROOIKAT -->
+  <text x="234" y="130"
+        font-family="'Helvetica Neue', 'Arial', sans-serif"
+        font-size="54"
+        font-weight="800"
+        letter-spacing="6"
+        fill="#f0f0ee">ROOIKAT</text>
+
+  <!-- LABS -->
+  <text x="238" y="162"
+        font-family="'Helvetica Neue', 'Arial', sans-serif"
+        font-size="22"
+        font-weight="300"
+        letter-spacing="18"
+        fill="#e8a030">LABS</text>
+
+  <!-- LLC — subtle, right-aligned to LABS -->
+  <text x="370" y="162"
+        font-family="'Helvetica Neue', 'Arial', sans-serif"
+        font-size="13"
+        font-weight="300"
+        letter-spacing="3"
+        fill="#888880">LLC</text>
+
+  <!-- Thin amber rule below -->
+  <line x1="230" y1="175" x2="570" y2="175" stroke="#e8a030" stroke-width="0.7" opacity="0.4"/>
+
+</svg>
