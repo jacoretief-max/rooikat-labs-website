@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rooikat Labs — Built Sharp. Powered by AI.</title>
+  <meta name="description" content="Rooikat Labs builds precision apps and business platforms powered by deep business experience and AI technology." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:       #C8922A;
+      --gold-light: #E8B84B;
+      --gold-dim:   #8B6418;
+      --black:      #080808;
+      --surface:    #111111;
+      --surface2:   #181818;
+      --border:     #2a2a2a;
+      --text:       #F0EAD6;
+      --muted:      #888880;
+      --radius:     12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ───────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 68px;
+      background: rgba(8,8,8,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    /* SVG Caracal ear-tuft mark */
+    .nav-mark {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+    }
+
+    .nav-wordmark {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--text);
+      letter-spacing: 0.02em;
+    }
+    .nav-wordmark span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--black) !important;
+      padding: 8px 22px;
+      border-radius: 6px;
+      font-weight: 700 !important;
+      letter-spacing: 0.02em !important;
+      text-transform: none !important;
+      font-size: 0.9rem !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--gold-light) !important; color: var(--black) !important; }
+
+    /* ── HERO ──────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 100px 5% 60px;
+      gap: 60px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .hero-content { max-width: 560px; }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px; height: 2px;
+      background: var(--gold);
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+    h1 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 40px;
+      max-width: 480px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gold);
+      color: var(--black);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 14px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--text);
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 14px 32px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* Caracal image panel */
+    .hero-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .caracal-frame {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+    }
+
+    .caracal-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 20px;
+      /* glow matching the fur tones */
+      filter: drop-shadow(0 0 60px rgba(200, 146, 42, 0.25));
+    }
+
+    /* Fallback if image not placed yet */
+    .caracal-placeholder {
+      width: 100%;
+      aspect-ratio: 1;
+      max-width: 480px;
+      background: radial-gradient(ellipse at 50% 40%, #1e1500 0%, #0a0800 60%, #080808 100%);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #2a2000;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Gold ring accent */
+    .caracal-frame::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, var(--gold-dim), transparent 50%, var(--gold-dim));
+      z-index: -1;
+      opacity: 0.6;
+    }
+
+    /* ── STATS STRIP ───────────────────────────────────── */
+    .stats-strip {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .stats-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 40px 5%;
+      display: flex;
+      justify-content: space-around;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── SERVICES ──────────────────────────────────────── */
+    section {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 100px 5%;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--gold);
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    h2 em { font-style: normal; color: var(--gold); }
+
+    .section-intro {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 64px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      transition: border-color 0.25s, transform 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--gold-dim));
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .service-card:hover { border-color: var(--gold-dim); transform: translateY(-4px); }
+    .service-card:hover::before { opacity: 1; }
+
+    .service-icon {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      background: rgba(200, 146, 42, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      font-size: 1.5rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── HOW WE WORK ───────────────────────────────────── */
+    .process-section {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .process-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 100px 5%;
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0;
+      margin-top: 64px;
+      position: relative;
+    }
+
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+    }
+
+    .process-step {
+      text-align: center;
+      padding: 0 20px;
+      position: relative;
+    }
+
+    .step-num {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--black);
+      border: 2px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--gold);
+      position: relative;
+      z-index: 1;
+    }
+
+    .process-step h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .process-step p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── ABOUT / PHILOSOPHY ────────────────────────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-content h2 { margin-bottom: 24px; }
+
+    .about-text {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-caracal {
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .about-caracal img {
+      width: 100%;
+      border-radius: 16px;
+      opacity: 0.85;
+      filter: drop-shadow(0 0 40px rgba(200, 146, 42, 0.2));
+    }
+
+    .quote-block {
+      background: var(--surface2);
+      border-left: 3px solid var(--gold);
+      padding: 28px 32px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-top: 36px;
+    }
+    .quote-block p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--text);
+      line-height: 1.6;
+      font-style: italic;
+    }
+    .quote-block cite {
+      display: block;
+      margin-top: 12px;
+      font-size: 0.8rem;
+      color: var(--gold);
+      font-style: normal;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ── CTA BANNER ────────────────────────────────────── */
+    .cta-banner {
+      background: linear-gradient(135deg, #1a1000 0%, #0f0a00 50%, #1a1000 100%);
+      border: 1px solid #2e2000;
+      border-radius: 20px;
+      padding: 80px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin: 0 5% 100px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      top: -60px; left: 50%;
+      transform: translateX(-50%);
+      width: 300px; height: 200px;
+      background: radial-gradient(ellipse, rgba(200,146,42,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-banner h2 {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      margin-bottom: 16px;
+    }
+    .cta-banner p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 500px;
+      margin: 0 auto 40px;
+    }
+
+    /* ── FOOTER ────────────────────────────────────────── */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 60px 5% 40px;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 60px;
+    }
+
+    .footer-brand .nav-wordmark { font-size: 1.4rem; margin-bottom: 16px; display: block; }
+    .footer-brand p { font-size: 0.875rem; color: var(--muted); line-height: 1.7; max-width: 300px; }
+
+    .footer-col h4 {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 10px; }
+    .footer-col a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--text); }
+
+    .footer-bottom {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 24px 5%;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* ── RESPONSIVE ────────────────────────────────────── */
+    /* ── FEATURED WORK / ROOTS ─────────────────────────── */
+    .work-section {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .work-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 100px 5%;
+    }
+
+    .roots-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-top: 64px;
+    }
+
+    .roots-phone-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .phone-frame {
+      width: 160px;
+      background: #111;
+      border: 2px solid #2e2e2e;
+      border-radius: 32px;
+      padding: 14px 10px;
+      position: relative;
+      box-shadow:
+        0 0 0 1px #1a1a1a,
+        0 24px 60px rgba(0,0,0,0.6),
+        0 0 80px rgba(200,146,42,0.08);
+      flex-shrink: 0;
+    }
+
+    .phone-frame.phone-center {
+      width: 180px;
+      transform: translateY(-16px);
+      border-color: #3a2e10;
+      box-shadow:
+        0 0 0 1px #2e2000,
+        0 32px 80px rgba(0,0,0,0.7),
+        0 0 100px rgba(200,146,42,0.15);
+    }
+
+    .phone-notch {
+      width: 50px;
+      height: 6px;
+      background: #222;
+      border-radius: 3px;
+      margin: 0 auto 10px;
+    }
+
+    .phone-screen {
+      background: #F7F0E6;
+      border-radius: 20px;
+      aspect-ratio: 9/19;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Circle screen mockup */
+    .screen-circle {
+      padding: 12px 10px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .sc-header {
+      font-size: 9px;
+      font-weight: 700;
+      color: #2C1810;
+      font-family: 'Inter', sans-serif;
+      margin-bottom: 4px;
+    }
+    .sc-ring {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 6px;
+      position: relative;
+    }
+    .sc-ring svg { width: 100%; height: 100%; }
+    .sc-card {
+      background: white;
+      border-radius: 6px;
+      padding: 5px 7px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      border: 0.5px solid #e8e0d4;
+    }
+    .sc-avatar {
+      width: 18px;
+      height: 18px;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 7px;
+      font-weight: 700;
+      color: white;
+      flex-shrink: 0;
+      font-family: 'Inter', sans-serif;
+    }
+    .sc-name { font-size: 7px; font-weight: 600; color: #2C1810; font-family: 'Inter', sans-serif; }
+    .sc-sub  { font-size: 5.5px; color: #9B8B7A; font-family: 'Inter', sans-serif; }
+    .sc-bar-bg { flex: 1; height: 2px; background: #f0e8dc; border-radius: 1px; margin-top: 2px; }
+    .sc-bar    { height: 100%; border-radius: 1px; }
+
+    /* Memories screen mockup */
+    .screen-memories {
+      padding: 12px 10px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .sm-header { font-size: 9px; font-weight: 700; color: #2C1810; font-family: 'Inter', sans-serif; margin-bottom: 2px; }
+    .sm-card {
+      border-radius: 8px;
+      padding: 8px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .sm-title { font-size: 7px; font-weight: 700; color: white; font-family: 'Inter', sans-serif; }
+    .sm-sub   { font-size: 5.5px; color: rgba(255,255,255,0.75); font-family: 'Inter', sans-serif; margin-top: 2px; }
+    .sm-card-sm {
+      border-radius: 6px;
+      padding: 6px;
+      height: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .roots-content { max-width: 540px; }
+
+    .roots-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(200,146,42,0.1);
+      border: 1px solid rgba(200,146,42,0.25);
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .roots-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .roots-content h3 em { font-style: normal; color: var(--gold); }
+
+    .roots-desc {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+
+    .roots-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+
+    .roots-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .roots-features li::before {
+      content: '';
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(200,146,42,0.12);
+      border: 1px solid rgba(200,146,42,0.3);
+      flex-shrink: 0;
+      margin-top: 1px;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 9l3 3 5-5' stroke='%23C8922A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-size: contain;
+    }
+    .roots-features li strong { color: var(--text); }
+
+    .roots-store {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .apple-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--text);
+      color: var(--black);
+      padding: 10px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: opacity 0.2s;
+      cursor: default;
+    }
+    .apple-badge:hover { opacity: 0.9; }
+    .apple-badge svg { width: 20px; height: 20px; flex-shrink: 0; }
+    .apple-badge-inner { display: flex; flex-direction: column; line-height: 1; }
+    .apple-badge-sub { font-size: 0.65rem; font-weight: 400; opacity: 0.7; margin-bottom: 2px; }
+
+    .coming-soon-note {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    @media (max-width: 900px) {
+      .roots-showcase { grid-template-columns: 1fr; gap: 48px; }
+      .roots-phone-wrap { order: -1; }
+      .phone-frame { width: 120px; }
+      .phone-frame.phone-center { width: 136px; }
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; padding-top: 120px; text-align: center; }
+      .hero-content { max-width: 100%; }
+      .hero-sub { max-width: 100%; }
+      .hero-eyebrow { justify-content: center; }
+      .hero-actions { justify-content: center; }
+      .hero-image { order: -1; }
+      .caracal-frame { max-width: 300px; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 40px; }
+      .process-steps::before { display: none; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <!-- Caracal ear-tuft SVG mark -->
+      <svg class="nav-mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Left ear + tuft -->
+        <path d="M8 22 Q7 14 10 8 Q11 5 12 3 Q13 6 13 10 Q14 8 15 5 Q15.5 8 15 12 Q16 11 17 9 Q17 13 16 17 Q14 20 13 22Z" fill="#C8922A"/>
+        <!-- Right ear + tuft -->
+        <path d="M28 22 Q29 14 26 8 Q25 5 24 3 Q23 6 23 10 Q22 8 21 5 Q20.5 8 21 12 Q20 11 19 9 Q19 13 20 17 Q22 20 23 22Z" fill="#C8922A"/>
+        <!-- Face oval -->
+        <ellipse cx="18" cy="25" rx="10" ry="9" fill="#8B6418"/>
+        <!-- Eyes -->
+        <ellipse cx="14.5" cy="24" rx="2" ry="1.8" fill="#C8922A"/>
+        <ellipse cx="21.5" cy="24" rx="2" ry="1.8" fill="#C8922A"/>
+        <ellipse cx="14.5" cy="24" rx="1" ry="1.2" fill="#1a0f00"/>
+        <ellipse cx="21.5" cy="24" rx="1" ry="1.2" fill="#1a0f00"/>
+        <!-- Nose -->
+        <path d="M17 27.5 Q18 28.5 19 27.5 Q18.5 29 18 29 Q17.5 29 17 27.5Z" fill="#3a2010"/>
+      </svg>
+      <span class="nav-wordmark">Rooikat <span>Labs</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Our Work</a></li>
+      <li><a href="#how">How We Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Rooikat Labs LLC &nbsp;•&nbsp; Colorado</div>
+      <h1>Built Sharp.<br><em>Powered by AI.</em></h1>
+      <p class="hero-sub">
+        We build precision apps and business platforms that give companies a real edge — combining deep business experience with cutting-edge AI technology to deliver solutions that actually work.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Start a Project &rarr;</a>
+        <a href="#services" class="btn-secondary">See What We Build</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="caracal-frame">
+        <!-- Replace src with your caracal image file once hosted -->
+        <img src="caracal.png" alt="Rooikat Labs — The Caracal"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="caracal-placeholder" style="display:none;">
+          <svg viewBox="0 0 200 220" width="200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Large decorative caracal silhouette -->
+            <path d="M50 180 Q40 130 45 90 Q47 70 55 50 Q58 38 62 22 Q65 38 66 55 Q68 45 72 30 Q74 50 73 68 Q76 58 81 44 Q82 65 80 85 Q90 70 95 55 Q96 80 92 100 Q100 85 107 68 Q108 90 104 112 Q112 95 118 78 Q119 102 116 120 Q122 108 126 94 Q127 118 124 136 Q130 125 133 112 Q134 135 132 152 Q136 142 138 130 Q139 155 136 172 Q150 160 160 148 Q155 175 145 188 Q130 195 110 200 Q90 205 70 200 Q50 195 40 185 Q45 182 50 180Z" fill="#2a1f0a" opacity="0.6"/>
+            <text x="100" y="115" text-anchor="middle" fill="#C8922A" font-size="13" font-family="Georgia,serif" font-style="italic" opacity="0.7">Place your</text>
+            <text x="100" y="133" text-anchor="middle" fill="#C8922A" font-size="13" font-family="Georgia,serif" font-style="italic" opacity="0.7">caracal image here</text>
+            <text x="100" y="151" text-anchor="middle" fill="#8B6418" font-size="10" font-family="Georgia,serif" opacity="0.5">(save as caracal.png)</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-strip">
+    <div class="stats-inner">
+      <div class="stat">
+        <div class="stat-num">iOS &amp; Android</div>
+        <div class="stat-label">Native Mobile Apps</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">AI-First</div>
+        <div class="stat-label">Every Solution We Build</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">End-to-End</div>
+        <div class="stat-label">Strategy to Deployment</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">Colorado</div>
+        <div class="stat-label">Based. Global Reach.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-label">What We Build</div>
+    <h2>Precision Tools for<br><em>Modern Business</em></h2>
+    <p class="section-intro">We don't build generic software. Every product we ship is shaped by real business understanding and designed to create measurable advantage.</p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">📱</div>
+        <h3>Mobile App Development</h3>
+        <p>iOS and Android apps built to perform — from consumer products to internal enterprise tools. Intuitive UX backed by solid engineering.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏗️</div>
+        <h3>Business Platform Solutions</h3>
+        <p>Custom platforms that digitise your operations, streamline workflows, and give you the data visibility to make faster decisions.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🤖</div>
+        <h3>AI Integration & Automation</h3>
+        <p>We embed AI where it actually adds value — intelligent automation, predictive tools, and LLM-powered features that save time and surface insight.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔁</div>
+        <h3>Digital Transformation</h3>
+        <p>Moving your business from legacy systems to modern, scalable architecture — with minimal disruption and maximum ROI.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED WORK / ROOTS -->
+  <div class="work-section" id="work">
+    <div class="work-inner">
+      <div class="section-label">Featured Product</div>
+      <h2>Built at Rooikat Labs —<br><em>Roots for iOS</em></h2>
+
+      <div class="roots-showcase">
+        <!-- Phone mockups -->
+        <div class="roots-phone-wrap">
+
+          <!-- Screen 1: Memories -->
+          <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="screen-memories">
+                <div class="sm-header">Memories</div>
+                <div class="sm-card" style="background:linear-gradient(135deg,#C45A3A,#8B3A28);flex:1.2;">
+                  <div class="sm-title">Dad's 60th Birthday</div>
+                  <div class="sm-sub">4 perspectives · 2 photos</div>
+                </div>
+                <div class="sm-card-sm" style="background:linear-gradient(135deg,#5B7B5B,#3d5a3d);">
+                  <div class="sm-title" style="font-size:6px;color:white;font-weight:700;font-family:Inter,sans-serif;">Weekend in Stellenbosch</div>
+                </div>
+                <div class="sm-card-sm" style="background:linear-gradient(135deg,#534AB7,#3a3380);">
+                  <div class="sm-title" style="font-size:6px;color:white;font-weight:700;font-family:Inter,sans-serif;">Team offsite — Bozeman</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Screen 2: Circle (centre, raised) -->
+          <div class="phone-frame phone-center">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="screen-circle">
+                <div class="sc-header">My Circle</div>
+                <!-- Dunbar ring SVG -->
+                <div class="sc-ring">
+                  <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="30" cy="30" r="28" stroke="#f0e8dc" stroke-width="1"/>
+                    <circle cx="30" cy="30" r="21" stroke="#e8d8c4" stroke-width="1"/>
+                    <circle cx="30" cy="30" r="14" stroke="#dcc8a8" stroke-width="1"/>
+                    <circle cx="30" cy="30" r="7"  stroke="#C8922A" stroke-width="1.5"/>
+                    <circle cx="30" cy="30" r="2.5" fill="#C8922A"/>
+                  </svg>
+                </div>
+                <!-- Connection cards -->
+                <div class="sc-card">
+                  <div class="sc-avatar" style="background:#C45A3A;">S</div>
+                  <div style="flex:1;min-width:0;">
+                    <div class="sc-name">Sarah K.</div>
+                    <div class="sc-sub">Contacted 3d ago</div>
+                    <div class="sc-bar-bg"><div class="sc-bar" style="width:82%;background:#5B7B5B;"></div></div>
+                  </div>
+                </div>
+                <div class="sc-card">
+                  <div class="sc-avatar" style="background:#534AB7;">J</div>
+                  <div style="flex:1;min-width:0;">
+                    <div class="sc-name">James M.</div>
+                    <div class="sc-sub">Contacted 12d ago</div>
+                    <div class="sc-bar-bg"><div class="sc-bar" style="width:55%;background:#C8922A;"></div></div>
+                  </div>
+                </div>
+                <div class="sc-card">
+                  <div class="sc-avatar" style="background:#5B7B5B;">M</div>
+                  <div style="flex:1;min-width:0;">
+                    <div class="sc-name">Morné S.</div>
+                    <div class="sc-sub">Sync your contacts</div>
+                    <div class="sc-bar-bg"><div class="sc-bar" style="width:30%;background:#C45A3A;"></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Screen 3: Person / nudge -->
+          <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="screen-circle" style="gap:5px;">
+                <div class="sc-header">Sarah K.</div>
+                <div style="width:36px;height:36px;border-radius:18px;background:#C45A3A;margin:0 auto 4px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:white;font-family:Inter,sans-serif;">S</div>
+                <div style="background:white;border-radius:5px;padding:5px 6px;border:0.5px solid #e8e0d4;">
+                  <div style="font-size:6px;color:#9B8B7A;font-family:Inter,sans-serif;margin-bottom:2px;">HEALTH SCORE</div>
+                  <div style="font-size:10px;font-weight:700;color:#5B7B5B;font-family:Inter,sans-serif;">82</div>
+                  <div style="height:3px;background:#f0e8dc;border-radius:2px;margin-top:2px;"><div style="width:82%;height:100%;background:#5B7B5B;border-radius:2px;"></div></div>
+                </div>
+                <div style="background:rgba(196,90,58,0.08);border-left:2px solid #C45A3A;border-radius:0 4px 4px 0;padding:4px 5px;">
+                  <div style="font-size:5px;color:#C45A3A;text-transform:uppercase;letter-spacing:0.05em;font-family:Inter,sans-serif;">NUDGE</div>
+                  <div style="font-size:6px;color:#2C1810;font-family:Inter,sans-serif;margin-top:1px;font-style:italic;line-height:1.4;">Sarah's birthday is in 7 days — a good time to reach out.</div>
+                </div>
+                <div style="background:#C45A3A;border-radius:4px;padding:5px;text-align:center;">
+                  <div style="font-size:6.5px;font-weight:700;color:white;font-family:Inter,sans-serif;">Log contact</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Content -->
+        <div class="roots-content">
+          <div class="roots-tag">📱 iOS App · Coming Soon</div>
+          <h3>Relationships need<br><em>intentional care.</em></h3>
+          <p class="roots-desc">
+            Roots is a private relationship management app grounded in Dunbar number theory — the science of how many meaningful connections a person can realistically maintain. It helps you stay genuinely close to the people who matter most, without the noise of social media.
+          </p>
+          <ul class="roots-features">
+            <li><strong>Circle layers</strong> — organise your relationships by closeness: Intimate, Close, Active, and Meaningful</li>
+            <li><strong>Connection health scoring</strong> — a decay model that surfaces who you haven't reached out to in a while</li>
+            <li><strong>Smart nudges</strong> — push notifications and WhatsApp reminders timed to your contact frequency preferences</li>
+            <li><strong>Shared memories</strong> — capture moments together with photos, voice notes, and multiple perspectives</li>
+            <li><strong>Contacts sync</strong> — links your phone contacts to your circle automatically</li>
+          </ul>
+          <div class="roots-store">
+            <a class="apple-badge">
+              <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+              </svg>
+              <div class="apple-badge-inner">
+                <span class="apple-badge-sub">Coming to the</span>
+                App Store
+              </div>
+            </a>
+            <span class="coming-soon-note">TestFlight beta launching soon</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW WE WORK -->
+  <div class="process-section" id="how">
+    <div class="process-inner">
+      <div class="section-label">How We Work</div>
+      <h2>From Idea to Impact</h2>
+
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-num">01</div>
+          <h3>Discover</h3>
+          <p>We dig into your business — not just the brief. Understanding your model, market, and constraints shapes everything we build.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-num">02</div>
+          <h3>Design</h3>
+          <p>Architecture and UX done together. We design for humans first, then engineer for scale.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-num">03</div>
+          <h3>Build</h3>
+          <p>Iterative development with full transparency. You see progress, not just promises.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-num">04</div>
+          <h3>Launch</h3>
+          <p>We stay through deployment, app store submission, and the critical first weeks in the wild.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-num">05</div>
+          <h3>Evolve</h3>
+          <p>The best products never stop improving. We build long-term partnerships, not one-off projects.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-content">
+        <div class="section-label">About Rooikat Labs</div>
+        <h2>Business Experience<br>Meets <em>AI Technology</em></h2>
+        <p class="about-text">
+          Rooikat Labs was built on a simple belief: the best technology solutions come from people who understand business, not just code. We bring decades of real-world business experience to every project — so we don't just build what you ask for, we build what you actually need.
+        </p>
+        <p class="about-text">
+          Our name comes from the Afrikaans word for the caracal — the sharp-eyed, agile wildcat of Africa. Precise. Alert. Built for results. That's how we approach every project.
+        </p>
+        <div class="quote-block">
+          <p>"We build what businesses need to move faster, see further, and compete smarter — powered by AI, grounded in experience."</p>
+          <cite>— Rooikat Labs</cite>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="about-caracal">
+          <img src="caracal.png" alt="The Rooikat — Precision and agility."
+               onerror="this.parentElement.style.display='none'" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div id="contact" style="max-width:1300px;margin:0 auto;padding:0 5% 100px;">
+    <div class="cta-banner">
+      <div class="section-label" style="justify-content:center;">Get Started</div>
+      <h2>Ready to Build<br><em>Something Sharp?</em></h2>
+      <p>Tell us what you're trying to solve. We'll tell you if we can help — and how.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <a href="mailto:hello@rooikatlabs.com" class="btn-primary">hello@rooikatlabs.com &rarr;</a>
+        <a href="#services" class="btn-secondary">View Our Services</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="nav-wordmark">Rooikat <span style="color:var(--gold)">Labs</span></span>
+        <p>Precision apps and business platforms powered by deep experience and AI technology. Based in Colorado. Built for the world.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Mobile Apps</a></li>
+          <li><a href="#services">Business Platforms</a></li>
+          <li><a href="#services">AI Integration</a></li>
+          <li><a href="#services">Digital Transformation</a></li>
+          <li><a href="#work">Roots — iOS App</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#how">How We Work</a></li>
+          <li><a href="mailto:hello@rooikatlabs.com">Contact</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Rooikat Labs LLC. All rights reserved.</span>
+      <span>rooikatlabs.com &nbsp;•&nbsp; Colorado, USA</span>
+    </div>
+  </footer>
+
+</body>
+</html>
